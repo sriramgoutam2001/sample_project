@@ -1,0 +1,15 @@
+<h1>Expense Report</h1>
+
+<p>Description: <%= @expense_report.description %></p>
+
+
+<h2>Expenses:</h2>
+<% @expense_report.expenses.each do |expense| %>
+  <p><%= link_to expense.description, expense_path(expense) %></p>
+<% end %>
+
+<p>Total Amount: <%= @expense_report.total_amount %></p>
+
+
+<p><%= link_to 'Edit', edit_expense_report_path(@expense_report) %></p>
+<p><%= link_to 'Delete', @expense_report, data: { turbo_method: :delete }, method: :delete %></p>

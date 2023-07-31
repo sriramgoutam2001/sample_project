@@ -1,0 +1,12 @@
+<h1>Edit comment</h1>
+
+<%= form_with(model: [@expense, @comment]) do |form| %>
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.submit "Edit comment"%>
+  </div>
+<% end %>

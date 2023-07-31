@@ -1,0 +1,12 @@
+<h1>Yubi employees page</h1>
+<% if flash[:notice].present? %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<%= link_to "New employee", new_employee_path %>
+<h2>List of Employees</h2>
+
+<% @employees.each do |employee| %>
+  <p>
+    <%= link_to employee.name, employee_path(employee) %>
+  </p>
+<% end %>

@@ -1,0 +1,5 @@
+<p><%= @comment.content %></p>
+
+<p><%= link_to "Edit", edit_expense_comment_path(@expense) %><p>
+
+<p><%= link_to "Delete", expense_comment_path(@expense, @comment), data: {turbo_method: :delete}%><p>

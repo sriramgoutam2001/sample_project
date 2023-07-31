@@ -1,0 +1,7 @@
+development:
+  api_endpoint: "https://my.api.mockaroo.com/invoices.json"
+  api_key: "b490bb80"
+
+production:
+  api_endpoint: "https://production-api.example.com/invoices"
+  api_key: "YOUR_PRODUCTION_API_KEY"

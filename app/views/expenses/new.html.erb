@@ -1,0 +1,42 @@
+<h1>New Expense</h1>
+
+<%= form_with model: @expense, url: expenses_path do |form| %>
+  <div>
+    <%= form.label :amount %>
+    <%= form.number_field :amount, step: 0.01 %>
+    <% @expense.errors.full_messages_for(:amount).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :date %>
+    <%= form.date_field :date %>
+    <% @expense.errors.full_messages_for(:date).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+    <% @expense.errors.full_messages_for(:description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :invoice_number %>
+    <%= form.text_field :invoice_number, pattern: '[a-zA-Z0-9]*', title: 'Invoice number should contain only letters and numbers.' %>
+    <% @expense.errors.full_messages_for(:invoice_number).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :bill %>
+    <%= form.file_field :bill %>
+    <% @expense.errors.full_messages_for(:bill).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,9 @@
+<h1>Expense Tracker</h1>
+<% if user_signed_in?%>
+    <% if current_user.status == 1 %>
+        <%= "The employee is terminated, can't apply for expenses." %>
+    <% else %>
+        <%= link_to "Expenses", expenses_path %> 
+        <%= link_to "Expense Reports", expense_reports_path %>
+    <% end %>
+<% end %>

@@ -1,0 +1,16 @@
+<% if flash[:notice].present? %>
+  <div>< class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<p><%= "Name: " + @employee.name %></p>
+
+<p><%= "Employee ID: " + @employee.emp_id %></p>
+
+<p><%= "Department: " + @employee.dept %></p>
+
+<p><%= "Employee status: " + @employee.emp_status %></p>
+<%= link_to "Delete Employee", employee_path(@employee), data: {turbo_method: :delete}%>
+<%= link_to "Edit employee details", edit_employee_path(@employee) %>
+
+
+<%= link_to "Expenses", expenses_path %> 

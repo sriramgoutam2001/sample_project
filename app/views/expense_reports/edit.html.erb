@@ -1,0 +1,20 @@
+<h1>Edit Expense Report</h1>
+
+<%= form_with(model: @expense_report) do |form| %>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  <div>
+    <%= form.label "Select Expenses" %>
+    <% @user_expenses.each do |expense| %>
+      <%= form.check_box :expense_ids, { multiple: true }, expense.id, nil %>
+      <%= form.label "expense_report_expense_ids_#{expense.id}", expense.description %>
+      <br>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit 'Edit Expense Report' %>
+  </div>
+<% end %>

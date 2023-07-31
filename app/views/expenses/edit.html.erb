@@ -1,0 +1,23 @@
+<h1>Edit expense</h1>
+
+<%= form_with(model: @expense) do |form| %>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+  <div>
+    <%= form.label :amount %>
+    <%= form.text_field :amount %>
+  </div>
+  <div>
+    <%= form.label :date %>
+    <%= form.text_field :date %>
+  </div>
+  <div>
+    <%= form.label :invoice_number %>
+    <%= form.text_field :invoice_number %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

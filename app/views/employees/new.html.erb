@@ -1,0 +1,22 @@
+<h1>New Employee</h1>
+<%= form_with(model: @employee, url: employees_path) do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :ID %>
+    <%= form.text_field :emp_id %>
+  </div>
+  <div>
+    <%= form.label :department %>
+    <%= form.text_field :dept %>
+  </div>
+  <div>
+    <%= form.label :status %>
+    <%= form.text_field :emp_status %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

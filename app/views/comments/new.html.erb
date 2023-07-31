@@ -1,0 +1,13 @@
+<h1>New Comment</h1>
+
+<%= form_with(model: [@expense, Comment.new], url: expense_comments_path(@expense)) do |form| %>
+
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Comment" %>
+  </div>
+<% end %>

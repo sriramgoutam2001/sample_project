@@ -1,0 +1,21 @@
+<p><%= "Amount: #{@expense.amount}" %></p>
+
+<p><%= "Date: #{@expense.date}" %></p>
+
+<p><%= "Description: " + @expense.description %></p>
+
+<p><%= "Invoice Number: " + @expense.invoice_number %></p>
+
+<p><%= "Approval status of the expense: #{@expense.expense_status}" %></p>
+
+<% if @expense.bill.attached? %>
+  <%= image_tag url_for(@expense.bill) %>
+<% end %>
+
+<p><%= link_to "Update expense", edit_expense_path %><p>
+<p><%= link_to "Delete expense", expense_path, data: {turbo_method: :delete}%><p>
+<% if current_user.admin %>
+    <%= button_to "Approve Expense", approve_expense_path(@expense), method: :get %>
+    <%= button_to "Reject Expense", reject_expense_path(@expense), method: :delete, data: { confirm: "Are you sure you want to reject this expense?" } %>
+<% end %>
+<p><%= link_to "Comments", expense_comments_path(@expense) %><p>
