@@ -10,6 +10,8 @@
 
 <p>Total Amount: <%= @expense_report.total_amount %></p>
 
-
+<% if current_user.id == @expense_report.user.id %>
 <p><%= link_to 'Edit', edit_expense_report_path(@expense_report) %></p>
 <p><%= link_to 'Delete', @expense_report, data: { turbo_method: :delete }, method: :delete %></p>
+<% end %>
+<p><%= link_to 'Back', expense_reports_path%></p>

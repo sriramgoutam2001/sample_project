@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          validates :emp_id, presence: true, format: { with: /\A[a-zA-Z]{2}\d{4}\z/, message: "ID should be 2 letters followed by 4 digits" }
          has_many :expenses, dependent: :destroy
+         has_many :comments, dependent: :destroy
          has_many :expense_reports, dependent: :destroy
          enum status: {
           present: 0,

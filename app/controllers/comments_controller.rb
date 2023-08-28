@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :find_expense
-  before_action :find_comment, only: [:show, :edit, :update, :destroy]
+  before_action :find_comment, only: [:edit, :update, :destroy]
   def index
   end
 
@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.build(comment_params)
     @comment.expense = @expense
     if @comment.save
       flash[:notice] = 'Comment has been successfully added.'
@@ -49,7 +49,7 @@ class CommentsController < ApplicationController
     end
 
     def find_comment
-      @comment = current_user.admin ? Expense.find(params[:expense_id]).comments.find(params[:id]) : current_user.expenses.find(params[:expense_id]).comments.find(params[:id])
+      @comment = current_user.comments.find(params[:id])
     end
 
     def comment_params

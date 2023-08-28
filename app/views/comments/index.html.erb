@@ -7,8 +7,20 @@
 <% if @expense.comments.any? %>
   <ul>
     <% @expense.comments.each do |comment| %>
-      <p><%= comment.content %></p>
-      <p><%= link_to "View comment", expense_comment_path(@expense,comment) %><p>
+      <p>
+        <% if comment.user.admin? %>
+          <strong><%= comment.user.name %>(admin)</strong>:
+        <% else %>
+          <strong><%= comment.user.name %></strong>:
+        <% end %>
+        <%= comment.content %>
+      </p>
+      <p>
+        <%if current_user.id == comment.user.id%>
+          <%= link_to "Edit", edit_expense_comment_path(@expense, comment) %>
+          <%= link_to "Delete", expense_comment_path(@expense, comment), data: { turbo_method: :delete } %>
+        <% end %>
+      </p>
     <% end %>
   </ul>
 <% else %>

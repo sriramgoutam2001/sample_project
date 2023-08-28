@@ -7,7 +7,7 @@
   </div>
   <div>
     <%= form.label "Select Expenses" %>
-    <% @user_expenses.each do |expense| %>
+    <% @unused_expenses.each do |expense| %>
       <%= form.check_box :expense_ids, { multiple: true }, expense.id, nil %>
       <%= form.label "expense_report_expense_ids_#{expense.id}", expense.description %>
       <br>

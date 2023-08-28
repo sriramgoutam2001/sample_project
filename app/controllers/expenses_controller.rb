@@ -44,7 +44,7 @@ class ExpensesController < ApplicationController
         puts 'Invoice validation succeeded!'
         if @expense.save
           flash[:notice] = 'Expense has been successfully added.'
-          redirect_to expenses_path
+          redirect_to expense_path(@expense)
         else
           puts @expense.errors.full_messages.inspect
           render :new, status: :unprocessable_entity
@@ -52,6 +52,9 @@ class ExpensesController < ApplicationController
       else 
         puts 'Invoice validation failed!'
         @expense.errors.add(:invoice_number, 'Invoice validation failed.')
+        @expense.errors[:invoice_number].each do |message|
+          flash.now[:alert] = message
+        end
         render :new
       end
     end

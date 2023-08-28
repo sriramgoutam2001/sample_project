@@ -20,12 +20,14 @@ class ExpenseReportsController < ApplicationController
   # GET /expense_reports/new
   def new
     @user_expenses = current_user.expenses
+    @unused_expenses = current_user.expenses.where(expense_report_id: nil)
     @expense_report = current_user.expense_reports.new
   end
 
   # GET /expense_reports/1/edit
   def edit
     @user_expenses = current_user.expenses
+    @unused_expenses = current_user.expenses.where('expense_report_id IS NULL OR expense_report_id = ?', params[:id])
     @expense_report = current_user.expense_reports.find(params[:id])
   end
 
@@ -34,7 +36,7 @@ class ExpenseReportsController < ApplicationController
     @expense_report = current_user.expense_reports.build(expense_report_params)
 
     if save_and_update_total_amount(@expense_report)
-      redirect_to expense_reports_path, notice: 'Expense report created successfully.'
+      redirect_to expense_report_path(@expense_report), notice: 'Expense report created successfully.'
     else
       render :new, status: :unprocessable_entity
     end
